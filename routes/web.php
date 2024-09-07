@@ -40,14 +40,32 @@ Route::get('view-student/{id}', [StudentController::class, 'viewinfo']);
 
 
 //User routes
-// Route::get('add-user', [UserController::class, 'registeruser']);
+// Route::get('add-user', [UserController::class, 'registeruser'])->name('registeruser');
 // Route::post('add-user', [UserController::class, 'store']);
 // Route::get('index', [UserController::class, 'show']);
 // Route::delete('user/{id}', [UserController::class, 'destroy']); // deletes a user data
 
 
-// Route::get('edit-user-data/{id}', [StudentController::class, 'edit']);
-// Route::put('updateuser-data/{id}', [StudentController::class, 'update']);
+
+// CRUD ROUTES FOR USER ACCOUNTS
+
+Route::get('login-pages', [UserController::class, 'loginuser'])->name('login');
+Route::get('register-pages', [UserController::class, 'registeruser'])->name('registeruser');
+
+Route::post('store-register', [UserController::class, 'store']);
+Route::post('store-login', [UserController::class, 'loginAcc']);
+Route::post('logout', [UserController::class, 'logoutUser']);
+
+Route::get('/homepages', [App\Http\Controllers\UserController::class, 'homepages'])->name('homepages');
+
+Route::get('index-display', [UserController::class, 'show']); //Display all user account registered
+Route::delete('user/{id}', [UserController::class, 'destroy'])->name('user-index'); // deletes a user data
+Route::get('view-user/{id}', [UserController::class, 'viewaccount']); //view specific user account
+
+// update/edit routes for user accounts
+Route::get('edit-userdata/{id}', [UserController::class, 'edit'])->name('edit-userdata');
+Route::put('updateuser-data/{id}', [UserController::class, 'update']);
+
 
 
 require __DIR__.'/auth.php';

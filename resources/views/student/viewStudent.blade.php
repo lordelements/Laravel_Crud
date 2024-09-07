@@ -26,20 +26,19 @@
                             @method('PUT')
                             
                             <div class="mb-3">
-                                <h5>Student Name</h5>
+                                <h6>Student name</h6>
                                 <p>{{$student->name}}</p>
-                                <h5></h5>
                             </div>
                             <div class="mb-3">
-                                <h5>Student Email address</h5>
+                                <h6>Student email address</h6>
                                 <p>{{$student->email}}</p>
                             </div>
                             <div class="mb-3">
-                                <h5>Student Course</h5>
+                                <h6>Student course</h6>
                                 <p>{{$student->course}}</p>
                             </div>
                             <div class="mb-3">
-                                <h5>Student Profile</h5>
+                                <h6>Student Profile</h6>
                                 <img src="{{ asset('uploads/students/'.$student->profile_image) }}"  width="70px" height="70px" alt="img">
                             </div>
                         </form>

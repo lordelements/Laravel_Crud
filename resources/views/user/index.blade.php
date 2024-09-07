@@ -24,21 +24,21 @@
                     </div>
                 </div>
 
-
-                @if ($message = Session::get('success'))
+                <x-messages />
+                <!-- @if ($message = Session::get('success'))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     <strong>Eyy ka muna jan!</strong> {{ $message }}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
-                @endif
+                @endif -->
 
-                <a href="{{ url('add-user') }}" class="btn btn-primary mt-4">Add user</a>
+                <!-- <a href="{{ url('add-user') }}" class="btn btn-primary mt-4">Add user</a> -->
+                <a href="{{ url('/homepages') }}" class="btn btn-outline-danger btn-sm m-0 mt-3">Back</a>
                 <table class="table table-hover mt-4">
                     <tr>
                         <th scope="col">No</th>
                         <th scope="col">Name</th>
                         <th scope="col">Email</th>
-                        <th scope="col">Password</th>
                         <th scope="col">Action</th>
                     </tr>
 
@@ -49,18 +49,16 @@
                             <td>{{ $users->id }}</td>
                             <td>{{ $users->name }}</td>
                             <td>{{ $users->email }}</td>
-                            <td>{{ $users->password }}</td>
                             
-                            <td>
-                               
+                            <td> 
                                 <form action="{{ url('user/'.$users->id) }}" method="POST">
-
-                                    <a class="btn btn-outline-info btn-sm" href="{{ url('user.show/'.$users->id) }}"> Show</a>
-                                    <a href="{{ url('edit-user-data/' .$users->id) }}" class="btn btn-outline-primary btn-sm">Edit</a>
+                                    
+                                    <a href="{{ url('edit-userdata/'.$users->id) }}" class="btn btn-outline-primary btn-sm">Edit</a>
                                    
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn btn-outline-danger btn-sm m-0" type="submit">Delete</button>
+                                    <a href="{{ url('view-user/'.$users->id) }}" class="btn btn-outline-info btn-sm">View</a>
                                 </form>
                             </td>
 
