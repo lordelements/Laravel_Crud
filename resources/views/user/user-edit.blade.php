@@ -23,7 +23,7 @@
 
                     <div class="card-header">
                         <h4>Add users Information
-                            <a href="{{ url('index-display') }}" class="btn btn-danger float-end">Back</a>
+                            <a href="{{ url('users') }}" class="btn btn-danger float-end">Back</a>
                             
                         </h4>
                     </div>

@@ -8,4 +8,4 @@
     <button type="submit">Logout</button>
 </form>
 
-<a href="{{ url('index-display') }}">List of accounts</a>
+<a href="{{ url('users') }}">List of accounts</a>

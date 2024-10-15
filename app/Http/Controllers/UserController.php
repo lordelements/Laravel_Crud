@@ -73,7 +73,8 @@ class UserController extends Controller
     public function show()
     {
         $user = User::all();
-        return view('user.index', compact('user'));
+        $total_user  = User::count();
+        return view('user.index', compact('user', 'total_user'));
     }
 
     // Delete user account function from database table
@@ -81,7 +82,32 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         $user->delete();
-        return redirect()->back()->with('messages', 'User deleted successfully.');
+        return redirect()->back()->with('messages', 'User added to archive successfully.');
+    }
+
+     // Delete permanently user data from database table
+    public function delete_permanent($id)
+    {
+        $user = User::withTrashed()->findOrFail($id);
+        $user->forceDelete();
+        return redirect()->back()->with('messages', 'User deleted permanently.');
+    }
+
+
+    // Function to restore deleted data
+    public function restore($id)
+    {
+        $user = User::withTrashed()->findOrFail($id);
+        $user->restore();
+        return redirect()->back()->with('messages', 'User data restored successfully.');
+    }
+
+    // Function to show the deleted data added to trash
+    public function trash() 
+    {
+        $user = User::onlyTrashed()->get();
+        $total_users_deleted  = User::onlyTrashed()->get()->count();
+        return view('user.users-deleted', compact('user', 'total_users_deleted'));
     }
 
     /**

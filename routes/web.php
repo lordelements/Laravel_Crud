@@ -58,14 +58,19 @@ Route::post('logout', [UserController::class, 'logoutUser']);
 
 Route::get('/homepages', [App\Http\Controllers\UserController::class, 'homepages'])->name('homepages');
 
-Route::get('index-display', [UserController::class, 'show']); //Display all user account registered
+Route::get('users', [UserController::class, 'show']); //Display all user account registered
 Route::delete('user/{id}', [UserController::class, 'destroy'])->name('user-index'); // deletes a user data
+Route::get('/user/{id}/delete-permanent', [UserController::class, 'delete_permanent'])->name('users.delete-permanent'); // deletes a user data
+
+// Route::get('user/{id}/delete-permanent', [UserController::class, 'deletePermanently'])->name('user.delete-permanent'); // route to delete user data permanently
+Route::get('user/trash', [UserController::class, 'trash'])->name('user.trash'); // deletes a user data
+Route::get('restore/{id}', [UserController::class, 'restore'])->name('user.restore'); // Restore a user data
 Route::get('view-user/{id}', [UserController::class, 'viewaccount']); //view specific user account
 
 // update/edit routes for user accounts
 Route::get('edit-userdata/{id}', [UserController::class, 'edit'])->name('edit-userdata');
-Route::put('updateuser-data/{id}', [UserController::class, 'update']);
 
+Route::put('updateuser-data/{id}', [UserController::class, 'update']);
 
 
 require __DIR__.'/auth.php';

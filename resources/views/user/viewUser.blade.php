@@ -17,19 +17,19 @@
                 <div class="card mt-4">
                     <div class="card-header">
                         User Information
-                        <h4><a href="{{ url('index-display') }}" class="btn btn-danger float-end">Back</a></h4>
+                        <h4><a href="{{ url('users') }}" class="btn btn-danger float-end">Back</a></h4>
                     </div>
                     <div class="card-body">
 
-                    <form action="{{ url('view-user/'.$user->id) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ url('view-user/'.$user->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
-                            
+
                             <div class="mb-3">
                                 <h6>User ID</h6>
                                 <p>{{$user->id }}</p>
                             </div>
-                            
+
                             <div class="mb-3">
                                 <h6>User name</h6>
                                 <p>{{ $user->name }}</p>
