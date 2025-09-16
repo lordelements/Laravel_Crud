@@ -30,7 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('index', [StudentController::class, 'Studentindex']); //to display the data 
+Route::get('index', [StudentController::class, 'index']); //to display the data 
 Route::get('add-students', [StudentController::class, 'create']); //to create the data 
 Route::post('add-students', [StudentController::class, 'store']); //to store the data 
 Route::get('edit-student/{id}', [StudentController::class, 'edit']);
@@ -56,7 +56,7 @@ Route::post('store-register', [UserController::class, 'store']);
 Route::post('store-login', [UserController::class, 'loginAcc']);
 Route::post('logout', [UserController::class, 'logoutUser']);
 
-Route::get('/homepages', [App\Http\Controllers\UserController::class, 'homepages'])->name('homepages');
+Route::get('/homepages', [UserController::class, 'homepages'])->name('homepages');
 
 Route::get('users', [UserController::class, 'show']); //Display all user account registered
 Route::delete('user/{id}', [UserController::class, 'destroy'])->name('user-index'); // deletes a user data
