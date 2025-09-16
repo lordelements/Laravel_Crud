@@ -1,4 +1,3 @@
-Here's a well-organized breakdown for your **README** file:
 
 ---
 
